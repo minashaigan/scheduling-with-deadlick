@@ -1,1 +1,1 @@
-# scheduling-with-deadlick
+# scheduling-with-deadlock
