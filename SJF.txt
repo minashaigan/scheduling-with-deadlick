@@ -1,0 +1,30 @@
+/* SJF */
+    int min;
+    int min_i;
+    int j;
+    int t=0;
+    for(t=0;t<total_burst;){
+        min=11;
+        for(i=0;i<NUM_PROCESSES;++i){
+            if(burst[i]<=min){
+                min = burst[i];
+                min_i = i;
+            }
+        }
+        for(j=0;j<burst[min_i];++j){
+            printf("in time %d the process %d executed\n",t,min_i);
+            t++;
+        }
+        for(j=0;j<NUM_PROCESSES;++j){
+            if(j != min_i){
+                wait[j] += burst[min_i];
+            }
+        }
+        burst[min_i] = 11;
+    }
+    int sum = 0;
+    for(i=0;i<NUM_PROCESSES;++i){
+        sum  += wait[i];
+    }
+    printf("average of waiting time : %d \n",sum/NUM_PROCESSES);
+    /* END SJF */
